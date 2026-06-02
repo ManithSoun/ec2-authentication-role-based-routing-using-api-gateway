@@ -42,14 +42,14 @@ app.use('/register', (req, res) => {
 app.use('/student',authToken, authRole('student'), (req, res) => {
     console.log("INSIDE API GATEWAY STUDENT ROUTE")
     req.url = req.url === '/' ? '/' : req.url
-    proxy.web(req, res, { target: 'http://localhost:5004' });
+    proxy.web(req, res, { target: 'http://52.71.253.15:5004' });
 })
 
 //REDIRECT TO THE TEACHER MICROSERVICE
 app.use('/teacher', authToken, authRole('teacher'),(req, res) => {
     console.log("INSIDE API GATEWAY TEACHER ROUTE")
     req.url = req.url === '/' ? '/' : req.url
-    proxy.web(req, res, { target: 'http://localhost:5001' });
+    proxy.web(req, res, { target: 'http://18.215.146.238:5001' });
 })
 
 //REDIRECT TO THE LOGIN(Authentication) MICROSERVICE
